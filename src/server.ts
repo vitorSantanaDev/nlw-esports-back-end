@@ -58,7 +58,7 @@ app.get("/games/:id/ads", async (req: Request, res: Response) => {
   return res.status(200).json({
     status: "success",
     totalAds: adsFormated.length,
-    data: { adsFormated },
+    data: { ads: adsFormated },
   });
 });
 
@@ -88,7 +88,9 @@ app.get("/ads/:id/discord", async (req: Request, res: Response) => {
     select: { discord: true },
   });
 
-  return res.status(200).json({ status: "success", data: { ad: ad.discord } });
+  return res
+    .status(200)
+    .json({ status: "success", data: { discord: ad.discord } });
 });
 
 const port = process.env.PORT || 19999;
